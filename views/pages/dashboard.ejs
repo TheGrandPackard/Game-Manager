@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<% include ../partials/header %>
+	<title>Game Manager</title>
+	<link href="css/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="/">Game Manager</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+          		<ul class="nav navbar-nav">
+            	  <li class="active"><a href="/dashboard">Dashboard</a></li>
+            	  <li><a href="/users">Users</a></li>
+          		</ul>
+        	</div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+		
+    <div class="container">
+	
+		<% if(typeof servers.length == 0) { %>
+		<div class="alert alert-warning" role="warning">
+			<p>There are currently no game servers installed. Click <a href="/add-server">here</a> to add a new server.
+		</div>
+		<% } else { %>		
+			<% servers.forEach(function(server) {
+					server.instances.forEach(function(instance) { %>
+						<div class="row panel panel-default server-listing" onclick="window.location.href ='/server/<%= server.game %>/<%= instance.name %>'">
+							<img src="img/servers/<%= server.game %>.png" class="server-listing-image"> <%= instance.name %>
+						</div>
+				<% }); %>
+			<% }); %>
+			<div class="alert alert-success" >
+			<p>Click <a href="/add-server">here</a> to add a new server.
+		</div>
+		<% } %>		
+		
+    </div> <!-- /container -->
+
+	<% include ../partials/javascript %>
+  </body>
+
+  <% include ../partials/footer %>
+</html>

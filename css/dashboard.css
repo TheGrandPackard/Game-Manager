@@ -1,0 +1,14 @@
+body {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.server-listing {
+	min-height: 100px;
+	cursor: pointer;
+}
+
+.server-listing-image {
+	width: 300px;
+}

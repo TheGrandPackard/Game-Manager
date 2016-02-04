@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<% include ../partials/header %>
+	<title>Game Manager</title>
+	<link href="css/setup.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Game Manager</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Game Manager Setup</h1>
+        <p class="lead">Welcome to the Game Manager setup! Please start by creating a username a password for the administrator account.</p>
+		
+      </div>
+
+	  <div class="container">
+	      <h2 class="form-signin-heading">Create Administrator Account</h2>
+		  <form class="form-signin" action="/setup" method="POST">
+			
+			<div class="form-group">
+			  <label for="inputUsername">Username</label>
+				<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" autofocus>
+			</div>
+			<div class="form-group">
+			  <label for="inputPassword">Password</label>
+			  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+			</div>
+			<div class="form-group">
+			  <label for="inputRepeatPassword">Repeat Password</label>
+			  <input type="password" class="form-control" id="inputRepeatPassword" name="repeat_password" placeholder="Repeat Password">
+			</div>
+			
+			<input type="hidden" name="setup" value="create_administrator">
+			
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+			
+			<% if(typeof errors !== "undefined" && errors !== null) { %>
+			<div class="alert alert-danger" role="alert">
+					<% errors.forEach(function(error, index) { %>					
+						<p><%= error %></p>
+					<% }); %>
+			</div>
+			<% } %>		
+			</div>
+			
+		  </form>
+
+		</div>
+    </div>
+
+	<% include ../partials/javascript %>
+  </body>
+
+  <% include ../partials/footer %>
+
+</html>

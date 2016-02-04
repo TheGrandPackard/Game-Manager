@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<% include ../partials/header %>
+	<title>Game Manager</title>
+	<link href="css/login.css" rel="stylesheet">
+  </head>
+
+  <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand">Game Manager</a>
+		</div>
+	  </div>
+	</nav>
+		
+    <div class="container">
+
+      <form class="form-signin" action="/login" method="POST">
+        <h2 class="form-signin-heading">Log In</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="username" id="inputUsername" class="form-control" name="username" placeholder="Username" autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+      </form>
+
+    </div> <!-- /container -->
+
+	<% include ../partials/javascript %>
+  </body>
+
+  <% include ../partials/footer %>
+</html>

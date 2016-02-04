@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<% include ../../partials/header %>
+	<title>Game Manager</title>
+	<link href="/css/add-server.css" rel="stylesheet">
+  </head>
+
+  <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand">Game Manager</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+          		<ul class="nav navbar-nav">
+            			<li class="active"><a href="/dashboard">Dashboard</a></li>
+           			<li><a href="/servers">Servers</a></li>
+            			<li><a href="/users">Users</a></li>
+          		</ul>
+        	</div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+		
+    <div class="container">	
+	
+		<div class="page-header">
+			<h1>Factorio</h1>
+		</div>
+	
+		<form action="/add-server" method="POST" enctype="multipart/form-data">
+		  <div class="form-group">
+			<label for="inputInstanceName" class="col-sm-2 control-label">Instance Name</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="inputInstanceName" placeholder="Instance Name" name="instance_name"
+					data-toggle="tooltip" data-placement="bottom" title="Name for the instance to distinguish it from other instances">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputUpdaterUsername" class="col-sm-2 control-label">Updater Username</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="inputUpdaterUsername" placeholder="Updater Username" name="updater_username"
+					data-toggle="tooltip" data-placement="bottom" title="Located in the player-data.json file in your Factorio folder">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputUpdaterUsername" class="col-sm-2 control-label">Updater Password</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="inputUpdaterPassword" placeholder="Updater Password" name="updater_password"
+					data-toggle="tooltip" data-placement="bottom" title="Located in the player-data.json file in your Factorio folder">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputAutosaveSlots" class="col-sm-2 control-label">Autosave Slots</label>
+			<div class="col-sm-10 input-group">
+			  <input type="number" class="form-control" id="inputAutosaveSlots" placeholder="Autosave Slots" value="12" name="autosave_slots"
+					data-toggle="tooltip" data-placement="bottom" title="The number of save files to rotate through. Old saves are overwritten">
+			  <div class="input-group-addon">Slots</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputAutosaveInterval" class="col-sm-2 control-label">Autosave Interval</label>
+			<div class="col-sm-10 input-group">
+			  <input type="number" class="form-control" id="inputAutosaveInterval" placeholder="Autosave Interval" value="5" name="autosave_interval"
+					data-toggle="tooltip" data-placement="bottom" title="How often the game automatically saves (Factorio only runs/saves when players are logged in)">
+			  <div class="input-group-addon">Minutes</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputLatency" class="col-sm-2 control-label">Latency</label>
+			<div class="col-sm-10 input-group">
+			  <input type="number" class="form-control" id="inputLatency" placeholder="Latency" value="130" name="latency"
+					data-toggle="tooltip" data-placement="bottom" title="This should be the highest latency of your player plus 30 for optimal synchronization">
+			  <div class="input-group-addon">ms</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputPortNumber" class="col-sm-2 control-label">Port Number</label>
+			<div class="col-sm-10 input-group">
+			  <input type="number" class="form-control" id="inputPortNumber" placeholder="Port Number" value="34197" name="port"
+					data-toggle="tooltip" data-placement="bottom" title="The port number that this instance will use. The default is 34197 but can be changed.">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputExperimentalRelease" class="col-sm-2 control-label">Experimental Release</label>
+			<div class="col-sm-10">
+			  <input type="checkbox" class="form-control" id="inputExperimentalRelease" checked name="experimental"
+					data-toggle="tooltip" data-placement="bottom" title="Whether or not to use experimental releases. See the Factorio website for more information">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputHeadless" class="col-sm-2 control-label">Headless</label>
+			<div class="col-sm-10">
+			  <input type="checkbox" class="form-control" id="inputHeadless" checked name="headless"
+					data-toggle="tooltip" data-placement="bottom" title="Whether or not to run headless. If you are running on a Linux server, this should be checked">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputAllowCommands" class="col-sm-2 control-label">Allow Commands</label>
+			<div class="col-sm-10">
+			  <input type="checkbox" class="form-control" id="inputAllowCommands" name="allow_commands"
+					data-toggle="tooltip" data-placement="bottom" title="Whether or not to allow console commands to be run from the client">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputPeerToPeer" class="col-sm-2 control-label">Peer-to-Peer</label>
+			<div class="col-sm-10">
+			  <input type="checkbox" class="form-control" id="inputPeerToPeer" name="peer_to_peer"
+					data-toggle="tooltip" data-placement="bottom" title="Whether or not to use Peer-to-Peer. Not recommended for dedicated servers">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputServerTarball" class="col-sm-2 control-label">Server Tarball</label>
+			<div class="col-sm-10">
+				<input type="file" id="inputServerTarball" name="server_tarball">
+				<p class="help-block">Download the server tarball from the <a href="https://www.factorio.com/download/experimental">Factorio website</a></p>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+			  <input type="hidden" name="game" value="factorio">
+			  <input type="hidden" name="action" value="create">
+			  <button type="submit" class="btn btn-default">Create</button>
+			</div>
+		  </div>
+		</form>
+    </div> <!-- /container -->
+
+	<% include ../../partials/javascript %>
+	
+	<script>
+		$('input').tooltip({ /*or use any other selector, class, ID*/
+			trigger: "hover"
+		});
+	</script>
+  </body>
+
+  <% include ../../partials/footer %>
+</html>

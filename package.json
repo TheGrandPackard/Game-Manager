@@ -1,0 +1,21 @@
+{
+  "name": "Game-Manager",
+  "main": "Game-Manager.js",
+  "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.4",
+    "passport": "~0.3.2",
+    "passport-local": "~1.0.0",
+    "connect-ensure-login": "~0.1.1",
+    "express-session": "~1.13.0",
+    "multer": "~1.1.0"
+  },
+  "version": "0.0.0",
+  "description": "Game Manager for managing video game servers.",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheGrandPackard",
+  "license": "BSD"
+}
